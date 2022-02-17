@@ -5,17 +5,27 @@ let array0 = []; // ID取得配列
 let array = [];
 const races = ['適正距離', 'ウマ娘', '1レース目', '2レース目', '3レース目', '4レース目', '5レース目', '平均スコア'];
 const Heading = ['短距離エース', '短距離', '短距離', 'マイルエース', 'マイル', 'マイル', '中距離エース', '中距離', '中距離', '長距離エース', '長距離', '長距離', 'ダートエース', 'ダート', 'ダート']; //テーブル見出しテキスト
+const valueArray = [];
 
 assessmentButton.onclick = function () {
   arrayInpot();
   hog();
+  console.log(valueArray);
 
+  for (let i of table.rows) {
+    //table.rows[i].cells[7].innerText = Math.random();
+    console.log(table.cells);
+    console.log(table.rows);
+  };
 };
 
-function hog() {
 
-  const reducer = (previousValue, currentValue) => previousValue + currentValue;
-  console.log(array[0].reduce(reducer)); //仮置き
+
+function hog() {
+  for (let i = 0; i < Heading.length; i++) {
+    const reducer = (previousValue, currentValue) => previousValue + currentValue;
+    valueArray.push(array[i].reduce(reducer)) / 2; //仮置き
+  };
 };
 function arrayInpot() {
   for (let i = 0; i < Heading.length; i++) {
@@ -24,16 +34,15 @@ function arrayInpot() {
         array0.push(document.getElementById('pt' + j + ',' + i).valueAsNumber);
       };
     };
-    array = [[i], [array0]];
+    array.push(array0);
     array0 = [];
-    console.log(array);
   };
 };
 
 //計算プログラム
 
 mainTable();
-
+let table = document.getElementById('testTable');
 //繰り返しテーブル
 //見出しテーブル
 function mainTable() {
@@ -77,7 +86,7 @@ function mainTable() {
       } else if (j === 6) {
         //スコア表
         newCell = newRow.insertCell();
-        newInput = document.createTextNode(0);
+        newInput = document.createTextNode(valueArray);
         newCell.appendChild(newInput);
       } else { };
     };
