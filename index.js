@@ -1,48 +1,49 @@
 'use strict';
 const assessmentButton = document.getElementById('assessment'); //ボタン関数
-let test = [];
-let array0 = []; // ID取得配列
-let array = [];
+//テーブルレーステキスト
 const races = ['適正距離', 'ウマ娘', '1レース目', '2レース目', '3レース目', '4レース目', '5レース目', '平均スコア'];
-const Heading = ['短距離エース', '短距離', '短距離', 'マイルエース', 'マイル', 'マイル', '中距離エース', '中距離', '中距離', '長距離エース', '長距離', '長距離', 'ダートエース', 'ダート', 'ダート']; //テーブル見出しテキスト
-const valueArray = [];
 
+//テーブル見出しテキスト
+const Heading = ['短距離エース', '短距離', '短距離', 'マイルエース', 'マイル', 'マイル', '中距離エース', '中距離', '中距離', '長距離エース', '長距離', '長距離', 'ダートエース', 'ダート', 'ダート'];
+
+
+//ボタンが押された時の処理
 assessmentButton.onclick = function () {
-  arrayInpot();
-  hog();
-  console.log(valueArray);
-
-  for (let i of table.rows) {
-    //table.rows[i].cells[7].innerText = Math.random();
-    console.log(table.cells);
-    console.log(table.rows);
+  for (let i = 0; i < Heading.length; i++) {
+    const arri = arrayInpot(i);//行のセルを取得
+    const ps = pointSum(arri);//行のセルを合計
+    const pa = pointAverage(ps);//行のセルを平均
+    testTable.rows[i + 1].cells[7].innerText = pa;//平均値をテーブルに代入
   };
 };
 
-
-
-function hog() {
-  for (let i = 0; i < Heading.length; i++) {
-    const reducer = (previousValue, currentValue) => previousValue + currentValue;
-    valueArray.push(array[i].reduce(reducer)) / 2; //仮置き
-  };
-};
-function arrayInpot() {
-  for (let i = 0; i < Heading.length; i++) {
-    for (let j = 0; j < races.length; j++) {
-      if (j >= 1 && j <= 5) {
-        array0.push(document.getElementById('pt' + j + ',' + i).valueAsNumber);
-      };
+//セルを取得
+function arrayInpot(i) {
+  let pointArray = []; // テーブルデータ
+  for (let j = 0; j < races.length; j++) {
+    if (j >= 1 && j <= 5) {
+      pointArray.push(document.getElementById('pt' + j + ',' + i).valueAsNumber); //セルの値を取得
     };
-    array.push(array0);
-    array0 = [];
   };
+  return pointArray
 };
+
+//行のセルを合計
+function pointSum(arr) {
+  const reducer = (previousValue, currentValue) => previousValue + currentValue;
+  return (arr.reduce(reducer));
+};
+
+//行の平均
+function pointAverage(point) {
+  return ~~(point / 5);
+}
 
 //計算プログラム
 
 mainTable();
 let table = document.getElementById('testTable');
+
 //繰り返しテーブル
 //見出しテーブル
 function mainTable() {
@@ -86,7 +87,7 @@ function mainTable() {
       } else if (j === 6) {
         //スコア表
         newCell = newRow.insertCell();
-        newInput = document.createTextNode(valueArray);
+        newInput = document.createTextNode(0);
         newCell.appendChild(newInput);
       } else { };
     };
