@@ -8,6 +8,8 @@ const Heading = ['短距離エース', '短距離', '短距離', 'マイルエ�
 
 
 //ボタンが押された時の処理
+
+//計算するボタン
 assessmentButton.onclick = function () {
   for (let i = 0; i < Heading.length; i++) {
     const arri = arrayInpot(i);//行のセルを取得
@@ -83,6 +85,9 @@ function mainTable() {
         newInput = document.createElement('input');
         newInput.setAttribute("type", "number",);
         newInput.setAttribute("id", "pt" + '' + j + ',' + i);
+        newInput.setAttribute("value", "1000");
+        newInput.setAttribute("step", "100");
+        newInput.setAttribute("min", "1000");
         newCell.appendChild(newInput);
       } else if (j === 6) {
         //スコア表
