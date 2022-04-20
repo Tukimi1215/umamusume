@@ -49,18 +49,18 @@ let table = document.getElementById('testTable');
 //繰り返しテーブル
 //見出しテーブル
 function mainTable() {
+
   let table = document.getElementById('testTable');
   let newRow = table.insertRow();
-  for (let i = 0; i < races.length; i++) {
+  for (let i = 0; i < races.length; i++) { //一行目作成
     let newTextA = document.createElement('th');
     newTextA.innerHTML = races[i];
     newRow.appendChild(newTextA);
   }
-  //記入欄テーブル
-  for (let i = 0; i < Heading.length; i++) {
-    //テーブル作成
-    let table = document.getElementById('testTable');
 
+
+  //記入欄テーブル
+  for (let i = 0; i < Heading.length; i++) { //2行目以降作成
     //行の追加
     let newRow = table.insertRow();
 
@@ -71,14 +71,19 @@ function mainTable() {
 
     //セル変数宣言
     let newCell = newRow.insertCell();
-    let nameCell = document.createElement('input')
     let newInput = document.createElement('input');
+    newInput.setAttribute("type", "text");
+    newInput.setAttribute("list", "listName");
+    newInput.setAttribute("placeholder", "ウマ娘")
+    let newForm = document.createElement('form');
 
-    for (let j = 0; j < races.length; j++) {
+
+    for (let j = 0; j < races.length; j++) { //横のデータ作成
       if (j === 0) {
         //名前入力(1列目)
-        nameCell.setAttribute("type", "text")
-        newCell.appendChild(nameCell);
+
+        newCell.appendChild(newForm);
+        newForm.appendChild(newInput);
       } else if (j >= 1 && j <= 5) {
         //スコア入力(2~6列目)
         newCell = newRow.insertCell();
