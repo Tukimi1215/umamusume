@@ -5,25 +5,44 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ウマ娘レース用育成補助計算機</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
   <h1>ウマ娘レース用育成補助計算機</h1>
   <h3>ptを稼ぎやすくまた安定性を出すために目安程度に使ってください</h3>
-  <table id="testTable" border="1">
-    <tr>
-      <th>適正距離</th>
-      <th>ウマ娘</th>
-      <th>1レース目</th>
-      <th>2レース目</th>
-      <th>3レース目</th>
-      <th>4レース目</th>
-      <th>5レース目</th>
-      <th>平均スコア</th>
-    </tr>
-    <button id="assessment">計算する</button>
-    <script src="index.js"></script>
+  <table id="testTable" border="1"></table>
+
+  <button id="assessment">計算する</button>
+  <script src="index.js"></script>
+
+
+
+  <datalist id="listName">
+    <option value="スペシャルウィーク"></option>
+    <option value="サイレンススズカ"></option>
+    <option value="トウカイテイオ-"></option>
+    <option value="マルゼンスキー"></option>
+    <option value="オグリキャップ"></option>
+    <option value="タイキシャトル"></option>
+    <option value="メジロマックイーン"></option>
+    <option value="シンボリルドルフ"></option>
+    <option value="ライスシャワー"></option>
+    <option value="ゴールドシップ"></option>
+    <option value="ウォッカ"></option>
+    <option value="ダイワスカーレット"></option>
+    <option value="グラスワンダー"></option>
+    <option value="エルコンドルパサー"></option>
+    <option value="エアグルーヴ"></option>
+    <option value="マヤノトップガン"></option>
+    <option value="スーパークリーク"></option>
+  </datalist>
+
+
+  <script language="JavaScript">
+    console.log(testTable.cells)
+  </script>
 </body>
 
 </html>
